@@ -1,6 +1,7 @@
 # Clustering-by-Nonparametric-Bayes
 This is my final project of lecture -- 'Bayesian Inference's
-<math>A</math>
+
+<math>A^2</math>
 
 date: "2018/7/8"
 
