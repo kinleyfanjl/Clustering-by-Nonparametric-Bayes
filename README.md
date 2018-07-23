@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 # Clustering-by-Nonparametric-Bayes
 This is my final project of lecture -- 'Bayesian Inference's
 date: "2018/7/8"
