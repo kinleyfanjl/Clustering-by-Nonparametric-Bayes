@@ -69,7 +69,7 @@ In this section, we will try the nonparametric bayesian clustering in a simple c
 ![](http://latex.codecogs.com/gif.latex?%24%24X_i%7C%5Cphi_k%2Cz_i%20%3D%20k%2C%5CSigma%20%5Csim%20%5Cmathcal%7BN%7D_p%28%5Cphi_k%2C%20%5CSigma%29%24%24)
 
 ### Generate Data
-Here is the code for generating experimental dataset, we will generate 100 data points with 5 latent clusters. And we set ![](http://latex.codecogs.com/gif.latex?%5Cmu_0%3D%20%284%2C7%29%2C%20%5CSigma_0%20%3D%20%5Cbegin%7Bbmatrix%7D%204%20%26%201%20%5C%5C%201%20%26%208%20%5Cend%7Bbmatrix%7D%2C%5C%20%5Calpha%20%3D%201.0%2C%5C%20N%3D100%2C%20%5CSigma%20%3D%20I_2%5Ctimes%200.5), the generation procedure and simple visual is following: 
+Here is the code for generating experimental dataset, we will generate 100 data points with 5 latent clusters. And we set ![](http://mathurl.com/render.cgi?%5Cphi_%7Bk%7D%5Csim%5Cmathcal%7BN%7D_p%28%5Cmu_0%2C%5CSigma_0%29%2C%5C%20%5C%20z_i%5Csim%20CRP%28%5Calpha%29%2C%20%5C%20%5C%20X_i%20%7C%20%5Cphi_k%2Cz_i%3Dk%2C%5CSigma%5Csim%5Cmathcal%7BN%7D_p%28%5Cphi_k%2C%5CSigma%29%5Cnocache), the generation procedure and simple visual is following: 
 ```{r}
 library(mvtnorm)
 library(MASS)
