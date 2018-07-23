@@ -3,7 +3,7 @@ This is my final project of lecture -- 'Bayesian Inference's
 
 date: "2018/7/8"
 
-##Nonparametric Bayesian model
+#Nonparametric Bayesian model
 There are many cases, which require a presuming parametric specifications of the probability distributions, such as observations from Normal distribution or Quening model with Poisson distribution, and so on. But this subjective assumption may cause misspecification of model, which will result in bad prediction of severe lack of accuracy. To avoid such cases, nonparametric methods are better, which can allow more flexible and robust specification. "Learning from data" can help reduce many risk.
 
 Indeed, nonparametric bayesian model should also have a bayesian-version style, which should contain prior, posterior, complex likelihood with kernel due to its complex expression and clever sampling methods needing expensive computation.
@@ -18,7 +18,7 @@ CRP process is a proper generative model without fixed number of clusters. Consi
 * A chinese restaurant has an infinite number of tables:
 * first cumtomer sits at the first table
 * m-th subsequent customer sits at a table drawn from the following distribution:
-$$P(previously\ occupied\ table\ i|\mathcal{F}_{m-1}) \propto n_i$$
+<math>$$P(previously\ occupied\ table\ i|\mathcal{F}_{m-1}) \propto n_i$$</math>
 $$P(the\ next\ unoccupied\ table|\mathcal{F}_{m-1}) \propto \alpha$$
 where $n_i$ is the number of customer currently at table i and where $\mathcal{F}_{m-1}$ denotes the state of the restaurant after m-1 customers have been seated.
 
