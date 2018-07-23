@@ -2,8 +2,6 @@
 This is my final project of lecture -- 'Bayesian Inference's
 date: "2018/7/8"
 
-![](http://mathurl.com/render.cgi?%5Czeta%28s%29%20%3D%20%5Csum_%7Bn%3D1%7D%5E%5Cinfty%20%5Cfrac%7B1%7D%7Bn%5Es%7D%5Cnocache)
-
 ## Nonparametric Bayesian model
 There are many cases, which require a presuming parametric specifications of the probability distributions, such as observations from Normal distribution or Quening model with Poisson distribution, and so on. But this subjective assumption may cause misspecification of model, which will result in bad prediction of severe lack of accuracy. To avoid such cases, nonparametric methods are better, which can allow more flexible and robust specification. "Learning from data" can help reduce many risk.
 
