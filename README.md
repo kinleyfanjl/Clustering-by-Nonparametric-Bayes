@@ -1,11 +1,23 @@
 # Clustering-by-Nonparametric-Bayes
 This is my final project of lecture -- 'Bayesian Inference's
 
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+formula1: $$n==x$$
+
+formula2: $$n!=x$$
+
+formula3: (m==y)
+
+formula4: [m!=y]
+
+formula5: \(k==z\)
+
+formula6: \[k!=z\]
 <math>A^2</math>
 
 date: "2018/7/8"
 
-#Nonparametric Bayesian model
+# Nonparametric Bayesian model
 There are many cases, which require a presuming parametric specifications of the probability distributions, such as observations from Normal distribution or Quening model with Poisson distribution, and so on. But this subjective assumption may cause misspecification of model, which will result in bad prediction of severe lack of accuracy. To avoid such cases, nonparametric methods are better, which can allow more flexible and robust specification. "Learning from data" can help reduce many risk.
 
 Indeed, nonparametric bayesian model should also have a bayesian-version style, which should contain prior, posterior, complex likelihood with kernel due to its complex expression and clever sampling methods needing expensive computation.
