@@ -4,7 +4,7 @@
 This is my final project of lecture -- 'Bayesian Inference's
 date: "2018/7/8"
 
-![](http://mathurl.com/5euwuy.png)
+![](http://mathurl.com/render.cgi?%5Czeta%28s%29%20%3D%20%5Csum_%7Bn%3D1%7D%5E%5Cinfty%20%5Cfrac%7B1%7D%7Bn%5Es%7D%5Cnocache)
 
 ## Nonparametric Bayesian model
 There are many cases, which require a presuming parametric specifications of the probability distributions, such as observations from Normal distribution or Quening model with Poisson distribution, and so on. But this subjective assumption may cause misspecification of model, which will result in bad prediction of severe lack of accuracy. To avoid such cases, nonparametric methods are better, which can allow more flexible and robust specification. "Learning from data" can help reduce many risk.
@@ -21,11 +21,11 @@ CRP process is a proper generative model without fixed number of clusters. Consi
 * A chinese restaurant has an infinite number of tables:
 * first cumtomer sits at the first table
 * m-th subsequent customer sits at a table drawn from the following distribution:
-<math>$$P(previously\ occupied\ table\ i|\mathcal{F}_{m-1}) \propto n_i$$</math>
-$$P(the\ next\ unoccupied\ table|\mathcal{F}_{m-1}) \propto \alpha$$
-where $n_i$ is the number of customer currently at table i and where $\mathcal{F}_{m-1}$ denotes the state of the restaurant after m-1 customers have been seated.
+![](http://mathurl.com/render.cgi?%24%24P%28previously%5C%20occupied%5C%20table%5C%20i%7C%5Cmathcal%7BF%7D_%7Bm-1%7D%29%20%5Cpropto%20n_i%24%24%5Cnocache)
+![](http://mathurl.com/render.cgi?%24%24P%28the%5C%20next%5C%20unoccupied%5C%20table%7C%5Cmathcal%7BF%7D_%7Bm-1%7D%29%20%5Cpropto%20%5Calpha%24%24%5Cnocache)
+where ![](http://latex.codecogs.com/gif.latex?%24n_i%24) is the number of customer currently at table i and where ![](http://mathurl.com/render.cgi?%5Cmathcal%7BF%7D_%7Bm-1%7D%5Cnocache) denotes the state of the restaurant after m-1 customers have been seated.
 
-This means, the (n+1)st person sits down at a new table with probability $\frac{\alpha}{n+\alpha}$, and at table k with probability $\frac{n_k}{n+\alpha}$, where $n_k$ is the number of people currently sitting at table k, and $\alpha$ is a dispersion hyperparameter.
+This means, the (n+1)st person sits down at a new table with probability ![](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Calpha%7D%7Bn&plus;%5Calpha%7D), and at table k with probability ![](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bn_k%7D%7Bn&plus;%5Calpha%7D), where ![](http://latex.codecogs.com/gif.latex?n_k) is the number of people currently sitting at table k, and ![](http://latex.codecogs.com/gif.latex?%5Calpha) is a dispersion hyperparameter.
 
 And with the clustering assignments, we can further assume that for kth cluster there is parameter $\phi_k$, we assume that $\phi_k\sim G_0$. Thus the generative model for data $X$ is $X|\phi_k \sim F_k, \phi_k\sim G_0$. This model can generate data with overlaping clusters. In this case, K-means and Gaussian mixture are not good enough, because from scatter plot people cannot define a correct number of clusters, because points are not seperable in the plot. 
 
@@ -65,18 +65,15 @@ This function will generate n samples from CRP process. It will return total num
 ```{r}
 crprnd(alpha = 1.0, n = 20)
 ```
-##Generate Data & Prior Assumption & Create Sampler##
+## Generate Data & Prior Assumption & Create Sampler
 In this section, we will try the nonparametric bayesian clustering in a simple case, where data are generated from a Normal distribution with share constant variance. And $X_i$ is a p-dimension vector. The generative procedure is:
 
-$$ \phi_k \sim \mathcal{N}_p(\mu_0,\Sigma_0)$$
-$$z_i\sim CRP(\alpha)$$
-$$X_i|\phi_k,z_i = k,\Sigma \sim \mathcal{N}_p(\phi_k, \Sigma)$$
+![](http://latex.codecogs.com/gif.latex?%5Cphi_k%20%5Csim%20%5Cmathcal%7BN%7D_p%28%5Cmu_0%2C%5CSigma_0%29)
+![](http://latex.codecogs.com/gif.latex?%24%24z_i%5Csim%20CRP%28%5Calpha%29%24%24)
+![](http://latex.codecogs.com/gif.latex?%24%24X_i%7C%5Cphi_k%2Cz_i%20%3D%20k%2C%5CSigma%20%5Csim%20%5Cmathcal%7BN%7D_p%28%5Cphi_k%2C%20%5CSigma%29%24%24)
 
 ### Generate Data
-Here is the code for generating experimental dataset, we will generate 100 data points with 5 latent clusters. And we set $\mu_0= (4,7), \Sigma_0 = \begin{bmatrix}
-4 & 1 \\
-1 & 8 
-\end{bmatrix},\ \alpha = 1.0,\ N=100, \Sigma = I_2\times 0.5$, the generation procedure and simple visual is following: 
+Here is the code for generating experimental dataset, we will generate 100 data points with 5 latent clusters. And we set ![](http://latex.codecogs.com/gif.latex?%5Cmu_0%3D%20%284%2C7%29%2C%20%5CSigma_0%20%3D%20%5Cbegin%7Bbmatrix%7D%204%20%26%201%20%5C%5C%201%20%26%208%20%5Cend%7Bbmatrix%7D%2C%5C%20%5Calpha%20%3D%201.0%2C%5C%20N%3D100%2C%20%5CSigma%20%3D%20I_2%5Ctimes%200.5), the generation procedure and simple visual is following: 
 ```{r}
 library(mvtnorm)
 library(MASS)
@@ -110,25 +107,25 @@ g+  geom_point()
 From this graph we can see that, such dataser has obvious overlaping clusters, and these clusters can be detected easily.
 
 ### Derivation of Sampler
-With this generative model, we can derive the posterior distribution of parameters with interest in. In clustering task, we want the distribution $z_i|X_i,\Sigma,\mu_0,\Sigma_0, \ \ i = 1,...,N,\ z_i \in \mathbb{N^+}$, and to get this posterior, which doesn't has a explicit expression. So we need to resort to Gibbs sampling method, which also need us to derive the full conditional distribution or respective kernel part. Because for parameters z we can only derive its kernel part, so we can only use ***Hybrid Gibbs Sampling***.
+With this generative model, we can derive the posterior distribution of parameters with interest in. In clustering task, we want the distribution ![](http://latex.codecogs.com/gif.latex?%24z_i%7CX_i%2C%5CSigma%2C%5Cmu_0%2C%5CSigma_0%2C%20%5C%20%5C%20i%20%3D%201%2C...%2CN%2C%5C%20z_i%20%5Cin%20%5Cmathbb%7BN%5E&plus;%7D%24), and to get this posterior, which doesn't has a explicit expression. So we need to resort to Gibbs sampling method, which also need us to derive the full conditional distribution or respective kernel part. Because for parameters z we can only derive its kernel part, so we can only use ***Hybrid Gibbs Sampling***.
 
 **Algorithm of Hybrid Gibbs**:
 
- 1. Initialization. We set $$\mu_0 = \bar{X},\Sigma_0=\frac{1}{n}XX^{T}$$ and initialize   $z_{i},\phi_{k},i\in\{1,..,N\},k\in\{1,..,K\}$ with CRP and  multivarite normal.
+ 1. Initialization. We set ![](http://latex.codecogs.com/gif.latex?%24%24%5Cmu_0%20%3D%20%5Cbar%7BX%7D%2C%5CSigma_0%3D%5Cfrac%7B1%7D%7Bn%7DXX%5E%7BT%7D%24%24) and initialize   ![](http://latex.codecogs.com/gif.latex?%24z_%7Bi%7D%2C%5Cphi_%7Bk%7D%2Ci%5Cin%5C%7B1%2C..%2CN%5C%7D%2Ck%5Cin%5C%7B1%2C..%2CK%5C%7D%24) with CRP and  multivarite normal.
 
  2. For the s-th echo:
      
     For i from 1 to N:
     
-    * We use a proposal distribution $z^*\sim \mathcal{N}_{I(j\in[0.5,100])}(z^{(s)}_{i}, 3)$, which is due to we want cluster index is positive integer and 100 points at most have 100 clusters;
+    * We use a proposal distribution ![](http://latex.codecogs.com/gif.latex?%24z%5E*%5Csim%20%5Cmathcal%7BN%7D_%7BI%28j%5Cin%5B0.5%2C100%5D%29%7D%28z%5E%7B%28s%29%7D_%7Bi%7D%2C%203%29%24), which is due to we want cluster index is positive integer and 100 points at most have 100 clusters;
     
-    * Sample $z_i$ by *Metroplis-Hasting*. Calculate the ratio $\frac{f(z^*|\cdot)}{f(z^s|\cdot)}$, where  $$z_i|\phi_{\{k\}},X_{\{i\}},z_{-i},\Sigma_0,\mu_0\propto \sum_{k=1}^{K}n_kp(x_i|\phi_k)1_{\{z_i=k\}} + \alpha f(x_i|\mu_0,\Sigma_0)1_{\{z_i=K+1\}}$$ where $n_k$ is the number of points in cluster k.
+    * Sample $z_i$ by *Metroplis-Hasting*. Calculate the ratio ![](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bf%28z%5E*%7C%5Ccdot%29%7D%7Bf%28z%5Es%7C%5Ccdot%29%7D), where  ![](http://latex.codecogs.com/gif.latex?%24%24z_i%7C%5Cphi_%7B%5C%7Bk%5C%7D%7D%2CX_%7B%5C%7Bi%5C%7D%7D%2Cz_%7B-i%7D%2C%5CSigma_0%2C%5Cmu_0%5Cpropto%20%5Csum_%7Bk%3D1%7D%5E%7BK%7Dn_kp%28x_i%7C%5Cphi_k%291_%7B%5C%7Bz_i%3Dk%5C%7D%7D%20&plus;%20%5Calpha%20f%28x_i%7C%5Cmu_0%2C%5CSigma_0%291_%7B%5C%7Bz_i%3DK&plus;1%5C%7D%7D%24%24) where ![](http://latex.codecogs.com/gif.latex?%24n_k%24) is the number of points in cluster k.
     
     For k from 1 to K:
-    * Sample $\phi_k$ from the full conditional distribution. According to the posterior update, we have:
-    $$\phi_k|X_{i},Z_{i},\mu_0,\Sigma_0 \sim \mathcal{N}_p\big((\Sigma_0^{-1}+\Sigma^{-1})^{-1}(\Sigma^{-1}\bar{X}_k+\Sigma_0\mu_0),(\Sigma_0^{-1}+\Sigma^{-1})^{-1}\big)$$
+    * Sample ![](http://latex.codecogs.com/gif.latex?%24%5Cphi_k%24) from the full conditional distribution. According to the posterior update, we have:
+    ![](http://latex.codecogs.com/gif.latex?%24%24%5Cphi_k%7CX_%7Bi%7D%2CZ_%7Bi%7D%2C%5Cmu_0%2C%5CSigma_0%20%5Csim%20%5Cmathcal%7BN%7D_p%5Cbig%28%28%5CSigma_0%5E%7B-1%7D&plus;%5CSigma%5E%7B-1%7D%29%5E%7B-1%7D%28%5CSigma%5E%7B-1%7D%5Cbar%7BX%7D_k&plus;%5CSigma_0%5Cmu_0%29%2C%28%5CSigma_0%5E%7B-1%7D&plus;%5CSigma%5E%7B-1%7D%29%5E%7B-1%7D%5Cbig%29%24%24)
     
- 3. If $s>C$, C is the echo when this sampler is stationary, we will collect samples of $(z_1,...,z_N)$.
+ 3. If s>C, C is the echo when this sampler is stationary, we will collect samples of ![](http://latex.codecogs.com/gif.latex?%24%28z_1%2C...%2Cz_N%29%24).
  
  4. Stop sampling until s reach S.
 
