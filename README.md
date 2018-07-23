@@ -64,9 +64,7 @@ crprnd(alpha = 1.0, n = 20)
 ## Generate Data & Prior Assumption & Create Sampler
 In this section, we will try the nonparametric bayesian clustering in a simple case, where data are generated from a Normal distribution with share constant variance. And $X_i$ is a p-dimension vector. The generative procedure is:
 
-![](http://latex.codecogs.com/gif.latex?%5Cphi_k%20%5Csim%20%5Cmathcal%7BN%7D_p%28%5Cmu_0%2C%5CSigma_0%29)
-![](http://latex.codecogs.com/gif.latex?%24%24z_i%5Csim%20CRP%28%5Calpha%29%24%24)
-![](http://latex.codecogs.com/gif.latex?%24%24X_i%7C%5Cphi_k%2Cz_i%20%3D%20k%2C%5CSigma%20%5Csim%20%5Cmathcal%7BN%7D_p%28%5Cphi_k%2C%20%5CSigma%29%24%24)
+![](http://mathurl.com/render.cgi?%5Cphi_%7Bk%7D%5Csim%5Cmathcal%7BN%7D_p%28%5Cmu_0%2C%5CSigma_0%29%2C%5C%20%5C%20z_i%5Csim%20CRP%28%5Calpha%29%2C%20%5C%20%5C%20X_i%20%7C%20%5Cphi_k%2Cz_i%3Dk%2C%5CSigma%5Csim%5Cmathcal%7BN%7D_p%28%5Cphi_k%2C%5CSigma%29%5Cnocache)
 
 ### Generate Data
 Here is the code for generating experimental dataset, we will generate 100 data points with 5 latent clusters. And we set ![](http://mathurl.com/render.cgi?%5Cphi_%7Bk%7D%5Csim%5Cmathcal%7BN%7D_p%28%5Cmu_0%2C%5CSigma_0%29%2C%5C%20%5C%20z_i%5Csim%20CRP%28%5Calpha%29%2C%20%5C%20%5C%20X_i%20%7C%20%5Cphi_k%2Cz_i%3Dk%2C%5CSigma%5Csim%5Cmathcal%7BN%7D_p%28%5Cphi_k%2C%5CSigma%29%5Cnocache), the generation procedure and simple visual is following: 
